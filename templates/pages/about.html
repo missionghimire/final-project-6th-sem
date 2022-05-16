@@ -1,0 +1,167 @@
+{% extends "base.html"%}
+
+{% load static %}
+
+{% block body_content %}
+
+  <section class="abt-01">
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                  <div class="wrapper">
+                      <h2>About Us</h2>
+                      <ul>
+                          <a href = "{% url 'frontend:home' %}">
+                            <li>Home<i class="far fa-angle-double-right"></i></li>
+                          </a>
+                          {% comment %} <li>Home<i class="far fa-angle-double-right"></i></li> {% endcomment %}
+                          <li>About Us</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <section class="about-us">
+      <div class="container">
+
+          <div class="row natur-row no-margin w-100">
+              <div class="text-part col-md-6">
+                  <h2>Welcome to <span>Smart Fitness</span></h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis varius faucibus
+                      ligula non congue. Suspendisse at pretium massa, sit amet
+                      vulputate nibh. Nam posuere eros dolor. Donec vel arcu sagittis, pretium nisl </p>
+                  <p> Cras faucibus laoreet nibh, sit amet tincidunt leo mollis in. Etiam eu mauris metus.
+                      Nulla facilisi. Etiam vestibulum,
+                      nisi et convallis elementum, leo orci aliquam metus, id posuere massa neque vitae
+                      arcu.</p>
+
+                  <p>Integer vulputate vehicula dolor a eleifend. Duis aliquam condimentum sapien,
+                      eget tempor justo. Aenean porttitor nibh metus, sollicitudin egestas metus posuere et
+                      . Fusce egestas volutpat metus, in sodales sem bibendum porta. Nunc hendrerit nunc sit
+                      amet tellus posuere, at malesuada sem gravida. Integer maximus ultricies augue, at
+                      dapibus elit bibendum consequat. Cras faucibus tellus eleifend, fermentum purus in,
+                      dapibus sapien. Praesent nec ornare risus. Etiam iaculis, ligula vel gravida
+                      vestibulum, urna justo posuere ante,
+                      id pretium massa arcu sed mi. Nunc a sollicitudin sem. Duis tempus </p>
+              </div>
+              <div class="image-part col-md-6">
+                  <img src="assets/images/abt-01.png" alt="">
+              </div>
+          </div>
+      </div>
+  </section>
+
+
+  <section class="bg-04">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="heading">
+            <h2>Our Trainer</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-6">
+          <div class="team-wrapper">
+            <div class="image">
+              <img src="assets/images/team/1.jpg">
+            </div>
+            <div class="content">
+              <h4>Daniel</h4>
+              <span>Coach</span>
+              <ul>
+                <li><i class="fab fa-facebook-f"></i></li>
+                <li><i class="fab fa-twitter"></i></li>
+                <li><i class="fab fa-instagram"></i></li>
+                <li><i class="fab fa-pinterest-p"></i></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-6">
+          <div class="team-wrapper">
+            <div class="image">
+              <img src="assets/images/team/2.jpg">
+            </div>
+            <div class="content">
+              <h4>Bella</h4>
+              <span>Coach</span>
+              <ul>
+                <li><i class="fab fa-facebook-f"></i></li>
+                <li><i class="fab fa-twitter"></i></li>
+                <li><i class="fab fa-instagram"></i></li>
+                <li><i class="fab fa-pinterest-p"></i></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-6">
+          <div class="team-wrapper">
+            <div class="image">
+              <img src="assets/images/team/3.jpg">
+            </div>
+            <div class="content">
+              <h4>Romeo</h4>
+              <span>Coach</span>
+              <ul>
+                <li><i class="fab fa-facebook-f"></i></li>
+                <li><i class="fab fa-twitter"></i></li>
+                <li><i class="fab fa-instagram"></i></li>
+                <li><i class="fab fa-pinterest-p"></i></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-05">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="content">
+            <h2>subscribe to our newslaetter! we promice not to spam</h2>
+            <ul>
+              <li>
+                <div class="form-group">
+                  <input class="form-control" role="text" name="Name" placeholder="Enter Your Name">
+                </div>
+              </li>
+              <li>
+                <div class="form-group">
+                  <input class="form-control" role="text" name="email" placeholder="Enter Your Email">
+                </div>
+              </li>
+              <li>
+                <a href="#">subscribe</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-06">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="wrapper">
+            <ul>
+              <li>
+                <i class="fal fa-play-circle"></i>
+                <strong class="text-uppercase">Explore life fitness</strong>
+                <a>Training Vide</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% endblock %}
