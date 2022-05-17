@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'apps.gym'
 ]
 
+AUTH_USER_MODEL = 'gym.CustomUser'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
