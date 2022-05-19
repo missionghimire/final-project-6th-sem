@@ -8,9 +8,17 @@
         <title>Fitness</title>
         <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/gym.css' %}">
         <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     </head>
     <body>
+        {% if messages %}
+        {% for message in messages  %}
+        <div class="alert alert-success" role="alert">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+
+
        
         {% include 'includes/header.html' %}
         {% block body_content %}{% endblock %}

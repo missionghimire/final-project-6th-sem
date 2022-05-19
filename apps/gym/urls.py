@@ -1,7 +1,7 @@
 from unicodedata import name
 from django.urls import path
 
-from apps.gym.views import Logout, home, signin, signup
+from apps.gym.views import Logout, becomemember, home, signin, signup
 
 app_name='gym'
 
@@ -12,4 +12,5 @@ urlpatterns = [
     path('signup',signup,name='signup'),
     path('logout',Logout,name='logout'),
     path('signin',signin,name='signin'),
+    path('member',becomemember,name='member')
 ] 

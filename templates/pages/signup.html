@@ -1,17 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Register">
-    </form>
-    
-</body>
-</html>
+{% extends "base.html"%}
+{%load crispy_forms_tags %} 
+
+{% load static %}
+
+{% block body_content %}
+
+
+	
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Signup here !</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-12 col-lg-10">
+					<div class="wrap d-md-flex">
+						
+						<div class="login-wrap p-4 p-lg-5">
+			      	<div class="d-flex">
+			      		<div class="w-100">
+			      			<h3 class="mb-4">Sign up</h3>
+			      		</div>
+								<div class="w-100">
+									<p class="social-media d-flex justify-content-end">
+										<a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
+										<a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
+									</p>
+								</div>
+			      	</div>
+							<form action="#" class="signin-form" method="post">
+								 {% csrf_token %} 
+
+			      		<div class="form-group mb-3 label" >
+                            {{ form|crispy }}
+			      			
+			      		</div>
+		           
+		            <div class="form-group">
+		            	<button type="submit" class="form-control btn btn-primary submit px-1">Sign In</button>
+		            </div>
+		            
+		          </form>
+		        </div>
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>
+	{% endblock %}
+

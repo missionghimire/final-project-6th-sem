@@ -1,8 +1,10 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import login,logout,authenticate
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
-from apps.gym.forms import CustomUserForm
+from apps.gym.forms import CustomUserForm, MemberForm
 
 def home(request):
     context=dict()
@@ -14,8 +16,9 @@ def signup(request):
         form=CustomUserForm(request.POST)
         if(form.is_valid()):
             form.save()
-            # login(request,user)
-            return redirect('/')
+            messages.success(request,'Login Success')
+            
+            return redirect('gym:signin')
 
     else:
         form = CustomUserForm()
@@ -25,6 +28,7 @@ def signup(request):
 
 def Logout (request):
     logout(request)
+    messages.success(request,'Logout Success')
     return redirect('/')
 
 def signin(request):
@@ -36,8 +40,28 @@ def signin(request):
             user=authenticate(username=username,password=password)
             if user is not None:
                 login(request,user)
-                return redirect('gym:sigin')
+                return redirect('/')
     else:
         form = AuthenticationForm()
-        return redirect('gym:signin')
-    return render(request,'pages/signin.html',{'form':form})                
+        
+       
+    return render(request,'pages/signin.html',{'form':form}) 
+    
+     
+@login_required(login_url='gym:signin')
+def becomemember(request):
+    context=dict()
+    if request.method == 'POST':
+        form = MemberForm(request.POST)
+        if(form.is_valid):
+            data=form.save(commit=False)
+            data.user=request.user
+            data.save()
+            messages.success(request,'Member Added')
+            return redirect('/')
+    else:
+        form=MemberForm()
+
+    context['form']=form            
+    
+    return render(request,'pages/becomemember.html',context)
