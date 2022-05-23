@@ -12,13 +12,13 @@
                     <div class="menu">
                         <ul>
                             <li>
-                                <a href="">Home</a>
+                                <a href="{% url 'gym:home' %}">Home</a>
                             </li>
                             <li>
                                 <a href="">About Us</a>
                             </li>
                             <li>
-                                <a href="">Services</a>
+                                <a href="{% url 'gym:service' %}">Services</a>
                             </li>
                             <li>
                                 <a href="{% url 'gym:member' %}">Member</a>
@@ -29,8 +29,8 @@
                             <li>
                                 {% if user.is_authenticated %}
 
-
-                                <a href="{% url 'gym:logout' %}">{{user.username}}Logout</a>
+                                <a href="">{{user.username}}</a>
+                                <a href="{% url 'gym:logout' %}">Logout</a>
 
                                 {% else %}
                                 <a href="{% url 'gym:signin' %}">Login</a>

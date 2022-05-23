@@ -1,4 +1,5 @@
 
+import email
 from django.db import models
 from django.contrib.auth.base_user import BaseUserManager
 from django.utils.translation import gettext_lazy as _
@@ -42,7 +43,8 @@ class CustomUser(AbstractUser):
     email = models.EmailField('email address', unique=True)
     full_name = models.CharField('Full Name', max_length=255, blank=True,
                               null=False)
-    REQUIRED_FIELDS = 'full_name','username'
+    # image = models.ImageField(upload_to= 'uploads/%Y/%m/%d')                          
+    REQUIRED_FIELDS = 'full_name','username',
     USERNAME_FIELD = 'email'
     
     
@@ -81,7 +83,8 @@ class Member(models.Model):
         ('others','others')
     ]
 
-    user=models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
+
     date_of_birth=models.DateField()
     gender=models.CharField(max_length=100,choices=Gender_Choice)
     plan=models.ForeignKey(Plan,on_delete=models.CASCADE)
@@ -105,4 +108,13 @@ class Dietmanagement(models.Model):
     # def __str__(self):
     #     return self.username
 
+class Dietmanagement(models.Model):
+    height=models.CharField(max_length=199)
+    weight=models.CharField(max_length=100)
+
+    
+class Passwordreset(models.Model):
+    email=models.EmailField('email address', unique=True)
+    def __str__(self):
+        return self.email
 

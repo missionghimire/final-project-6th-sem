@@ -1,0 +1,60 @@
+{% extends "base.html"%}
+{%load crispy_forms_tags %} 
+
+{% load static %}
+
+{% block body_content %}
+<br>
+
+<h1 style="color: blue; text-align: center;" >you have following plan:</h1>
+<br>
+
+
+{% if user.is_authenticated %}
+
+{% if info.is_approved %}
+<p> </p>
+<table class="table table-hover table-dark">
+     <thead>
+       <tr>
+         <th scope="col">Name</th>
+         <th scope="col">Plan Name</th>
+         <th scope="col">Plan Amount</th>
+         <th scope="col">InitialAmount</th>
+         <th scope="col">DueAmount</th>
+         <th scope="col">Delete</th>
+
+
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+         <th scope="row">{{user.full_name}}</th>
+         <td>{{plan.name}}</td>
+         <td>{{plan.amount}}</td>
+         <td>{{info.initialamount}}</td>
+         <td>Rs:- {{due_amount}}</td>
+         <td class="d-flex justify-content-between">
+          <a href="{% url 'gym:delete' info.id %}"><i class="text-danger">delete</i></a>
+          </td>
+
+
+
+
+        
+       </tr>
+     </tbody>
+   </table>
+
+{% else %}
+<p>{{user.full_name}}</p>
+<p>not approved yet </p>
+<p>delete <a href="{% url 'gym:delete' info.id %}">delete</a></p>
+{% endif %}
+
+
+
+
+{% endif %}
+<br>
+{% endblock %}

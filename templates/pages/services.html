@@ -1,72 +1,59 @@
 {% extends "base.html"%}
+{%load crispy_forms_tags %} 
 
 {% load static %}
 
 {% block body_content %}
 
 
-  <section class="abt-01">
-      <div class="container">
-          <div class="row">
-              <div class="col-12">
-                  <div class="wrapper">
-                      <h2>Services</h2>
-                      <ul>
-                          <li>Home<i class="far fa-angle-double-right"></i></li>
-                          <li>services</li>
-                      </ul>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
+	
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+				
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-12 col-lg-10">
+					<div class="wrap d-md-flex">
+						<div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
+							<div class="text w-100">
+								<p> Welcome to BMI Calculation </p>
+								<p>Your BMI Result</p>
+								<h2 style='color: blue; scrollbar-highlight-color: rgb(34, 202, 18);'>{{status}}</h2>
+							</div>
+			      </div>
+						<div class="login-wrap p-4 p-lg-5">
+			      	<div class="d-flex">
+			      		<div class="w-100">
+			      		
+			      		</div>
+								<div class="w-100">
+									<p class="social-media d-flex justify-content-end">
+										<a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
+										<a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
+									</p>
+								</div>
+			      	</div>
+							<form action="#" class="signin-form" method="post">
+								 {% csrf_token %} 
 
+			      		<div class="form-group mb-3 label" >
+                            {{ form|crispy }}
+			      			
+			      		</div>
+		           
+		            <div class="form-group">
+		            	<button type="submit" class="form-control btn btn-primary submit px-3">Calculate BMI</button>
+		            </div>
+		            
+		          </form>
+		        </div>
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>
+	{% endblock %}
 
-
-  <section class="bg-05">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="content">
-            <h2>subscribe to our newslaetter! we promice not to spam</h2>
-            <ul>
-              <li>
-                <div class="form-group">
-                  <input class="form-control" role="text" name="Name" placeholder="Enter Your Name">
-                </div>
-              </li>
-              <li>
-                <div class="form-group">
-                  <input class="form-control" role="text" name="email" placeholder="Enter Your Email">
-                </div>
-              </li>
-              <li>
-                <a href="#">subscribe</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-06">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="wrapper">
-            <ul>
-              <li>
-                <i class="fal fa-play-circle"></i>
-                <strong class="text-uppercase">Explore life fitness</strong>
-                <a>Training Vide</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  {% endblock %}
