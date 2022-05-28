@@ -11,7 +11,7 @@
                   <div class="wrapper">
                       <h2>About Us</h2>
                       <ul>
-                          <a href = "{% url 'frontend:home' %}">
+                          <a href = "{% url 'gym:home' %}">
                             <li>Home<i class="far fa-angle-double-right"></i></li>
                           </a>
                           {% comment %} <li>Home<i class="far fa-angle-double-right"></i></li> {% endcomment %}
@@ -47,7 +47,7 @@
                       id pretium massa arcu sed mi. Nunc a sollicitudin sem. Duis tempus </p>
               </div>
               <div class="image-part col-md-6">
-                  <img src="assets/images/abt-01.png" alt="">
+                  <img src="{% static 'images/abt-01.png' %}" alt="">
               </div>
           </div>
       </div>
@@ -67,7 +67,7 @@
         <div class="col-md-4 col-sm-6 col-xs-6">
           <div class="team-wrapper">
             <div class="image">
-              <img src="assets/images/team/1.jpg">
+              <img src="{% static 'images/team/1.jpg' %}">
             </div>
             <div class="content">
               <h4>Daniel</h4>
@@ -84,7 +84,7 @@
         <div class="col-md-4 col-sm-6 col-xs-6">
           <div class="team-wrapper">
             <div class="image">
-              <img src="assets/images/team/2.jpg">
+              <img src="{% static 'images/team/2.jpg' %}">
             </div>
             <div class="content">
               <h4>Bella</h4>
@@ -101,7 +101,7 @@
         <div class="col-md-4 col-sm-6 col-xs-6">
           <div class="team-wrapper">
             <div class="image">
-              <img src="assets/images/team/3.jpg">
+              <img src="{% static 'images/team/3.jpg' %}">
             </div>
             <div class="content">
               <h4>Romeo</h4>
@@ -119,32 +119,6 @@
     </div>
   </section>
 
-  <section class="bg-05">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="content">
-            <h2>subscribe to our newslaetter! we promice not to spam</h2>
-            <ul>
-              <li>
-                <div class="form-group">
-                  <input class="form-control" role="text" name="Name" placeholder="Enter Your Name">
-                </div>
-              </li>
-              <li>
-                <div class="form-group">
-                  <input class="form-control" role="text" name="email" placeholder="Enter Your Email">
-                </div>
-              </li>
-              <li>
-                <a href="#">subscribe</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="bg-06">
     <div class="container">

@@ -47,9 +47,38 @@
    </table>
 
 {% else %}
-<p>{{user.full_name}}</p>
-<p>not approved yet </p>
-<p>delete <a href="{% url 'gym:delete' info.id %}">delete</a></p>
+<table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      
+      
+      
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{user.full_name}}</th>
+     
+      <td>Not approved yet</td>
+      <td class="d-flex justify-content-between">
+        <a href="{% url 'gym:memberupdate' info.pk %}"><i class="text-danger">Update</i></a>
+        
+       <a href="{% url 'gym:delete' info.id %}"><i class="text-danger">delete</i></a>
+       </td>
+
+
+
+
+     
+    </tr>
+  </tbody>
+</table>
+
 {% endif %}
 
 

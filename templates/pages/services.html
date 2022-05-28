@@ -36,6 +36,7 @@
 									</p>
 								</div>
 			      	</div>
+					 
 							<form action="#" class="signin-form" method="post">
 								 {% csrf_token %} 
 
@@ -43,12 +44,14 @@
                             {{ form|crispy }}
 			      			
 			      		</div>
-		           
+						  {% if data == status %}
 		            <div class="form-group">
 		            	<button type="submit" class="form-control btn btn-primary submit px-3">Calculate BMI</button>
-		            </div>
+					</div>
+					{% endif %}
 		            
 		          </form>
+				  
 		        </div>
 		      </div>
 				</div>
