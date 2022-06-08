@@ -22,6 +22,8 @@
          <th scope="col">Plan Amount</th>
          <th scope="col">InitialAmount</th>
          <th scope="col">DueAmount</th>
+         <th scope="col">Status</th>
+
          <th scope="col">Delete</th>
 
 
@@ -34,6 +36,8 @@
          <td>{{plan.amount}}</td>
          <td>{{info.initialamount}}</td>
          <td>Rs:- {{due_amount}}</td>
+         <td>{{info.status}}</td>
+
          <td class="d-flex justify-content-between">
           <a href="{% url 'gym:delete' info.id %}"><i class="text-danger">delete</i></a>
           </td>
@@ -64,7 +68,7 @@
     <tr>
       <th scope="row">{{user.full_name}}</th>
      
-      <td>Not approved yet</td>
+      <td>{{info.status}}</td>
       <td class="d-flex justify-content-between">
         <a href="{% url 'gym:memberupdate' info.pk %}"><i class="text-danger">Update</i></a>
         

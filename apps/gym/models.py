@@ -48,6 +48,7 @@ class CustomUser(AbstractUser):
     address=models.CharField(max_length=100,null=True)    
     number=models.CharField(max_length=100,null=True)                         
     image = models.FileField(upload_to= 'uploads/%Y/%m/%d',null=True)
+    is_trainer=models.BooleanField(default=False)
     REQUIRED_FIELDS = 'full_name', 'username','address','number','image',
     USERNAME_FIELD = 'email'
 
@@ -86,6 +87,11 @@ class Plan(models.Model):
 class Member(models.Model):
     Gender_Choice = [('male', 'male'), ('female', 'female'),
                      ('others', 'others')]
+    STATUS=[
+        ('pending','pending'),
+        ('Accept','Accept'),
+        ('Reject','Reject')
+    ]                 
 
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
 
@@ -95,6 +101,7 @@ class Member(models.Model):
     joindate = models.DateTimeField(auto_now_add=True)
     expiredate = models.DateField()
     initialamount = models.DecimalField(max_digits=10, decimal_places=2)
+    status=models.CharField(max_length=100,choices=STATUS,default="pending",null=True)
     is_approved = models.BooleanField(default=False)
 
     def __str__(self):

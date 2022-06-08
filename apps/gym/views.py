@@ -5,7 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from apps.gym.forms import ContactForm, CustomUserForm, Formbmi, MemberForm,UserUpdateForm
+from apps.gym.forms import ContactForm, CustomUserForm, Formbmi, MemberForm, UserUpdateForm
 from apps.gym.models import CustomUser, Enquery, Equipment, Member, Plan
 from django.core.mail import send_mail
 from config import settings
@@ -36,7 +36,7 @@ def home(request):
 def signup(request):
 
     if (request.method == 'POST'):
-        form = CustomUserForm(request.POST,request.FILES)
+        form = CustomUserForm(request.POST, request.FILES)
         if (form.is_valid()):
             form.save()
             messages.success(request, 'Login Success')
@@ -84,24 +84,26 @@ def becomemember(request):
     context['form'] = form
     return render(request, 'pages/becomemember.html', context)
 
+
 @login_required(login_url='gym:signin')
-def userprofil(request,pk):
-    
+def userprofil(request, pk):
+
     if request.method == "POST":
         custom = CustomUser.objects.get(id=pk)
         form = UserUpdateForm(request.POST, request.FILES, instance=custom)
         if form.is_valid():
             form.save()
             messages.success(request, "Update Success ")
-            return redirect("gym:userprofil",pk)
+            return redirect("gym:userprofil", pk)
     else:
         custom = CustomUser.objects.get(id=pk)
         form = UserUpdateForm(instance=custom)
 
     context = {
         'form': form,
-    } 
-    return render(request, 'pages/userprofil.html',context)
+    }
+    return render(request, 'pages/userprofil.html', context)
+
 
 @login_required(login_url='gym:signin')
 def delete(request, pk):
@@ -113,6 +115,7 @@ def delete(request, pk):
     except Member.DoesNotExist:
         messages.error(request, 'Membership cant delete')
         return redirect('gym:member')
+
 
 @login_required(login_url='gym:signin')
 def approve(request):
@@ -191,6 +194,7 @@ def service(request):
 
     return render(request, 'pages/services.html', {'form': form})
 
+
 @login_required(login_url='gym:signin')
 def update(request, pk):
     if request.method == "POST":
@@ -231,3 +235,11 @@ def contact(request):
 
 def about(request):
     return render(request, 'pages/about.html')
+
+
+def trainer(request):
+    context = dict()
+    if request.user.is_authenticated:
+
+        context['infos'] = Member.objects.all()
+    return render(request, 'pages/trainer.html', context)

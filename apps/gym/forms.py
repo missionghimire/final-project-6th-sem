@@ -24,7 +24,8 @@ class UserUpdateForm(forms.ModelForm):
             'username',
             'number',
             'address',
-            'image'
+            'image',
+            
         )
 
 
@@ -33,7 +34,7 @@ class MemberForm(forms.ModelForm):
 
     class Meta:
         model = Member
-        exclude = ('is_approved', 'user')
+        exclude = ('is_approved', 'user','status')
         widgets = {
             'date_of_birth': forms.DateInput(attrs={'type': 'date'}),
             'joindate': forms.DateInput(attrs={'type': 'date'}),
