@@ -5,7 +5,18 @@
 
 {% block body_content %}
 
-  
+  <style>
+    .a{
+		max-width: 200px;
+		max-height:300px;
+		margin: 0 auto;
+		
+	}
+    .container1{
+      display: flex;
+      
+    }
+  </style>
 
   <section class="banner">
     <div class="container">
@@ -13,10 +24,12 @@
         <div class="col-12">
           <div class="wrapper">
             <h1>give vent <span>to</span> emotions</h1>
-            <h5>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Maxime unde quos minus rem et vero similique tempora rerum. 
-              Ipsum aliquid quos laudantium minima repudiandae sapiente doloremque! 
-              Porro culpa exercitationem et!</h5>
+            <h5>A good gym involves more than just the right exercise equipment. 
+              You need to think of the type of clientele you’ll be serving,
+               membership and subscription fees, hosting fitness classes,
+                and finding new ways to differentiate your fitness center
+                 from the competition. The best way to plan all this out
+               and leverage your strengths is by starting off with a business plan.</h5>
               <a>Join the force</a>
           </div>
         </div>
@@ -39,11 +52,10 @@
               <div class="content">
                 <h3>Beginnner</h3>
                 <span>$20</span>
-                <p>Lorem ipsum dolor sit amet consectetur 
-                  adipisicing elit. Deserunt reiciendis blanditiis
-                  eligendi unde, accusantium soluta totam laudantium 
-                  reprehenderit perspiciatis nulla quidem! Rem pariatur 
-                  consequatur soluta atque ipsum aperiam! Et, praesentium!</p>
+                <p>f you need a bit of inspiration check out or
+                   gym sample plans for fitness centers, corporate fitness,
+                    gyms, health clubs, as well as martial arts studios, gymnastics schools, 
+                  and a number of other athletics businesses.</p>
                   <a>Read More<i class="fal fa-arrow-right"></i></a>
               </div>
             </div>
@@ -51,11 +63,10 @@
               <div class="content">
                 <h3>Advanced</h3>
                 <span>$30</span>
-                <p>Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Deserunt reiciendis blanditiis
-                  eligendi unde, accusantium soluta totam laudantium
-                  reprehenderit perspiciatis nulla quidem! Rem pariatur
-                  consequatur soluta atque ipsum aperiam! Et, praesentium!</p>
+                <p>If you’re looking to develop a more modern business plan,
+                   we recommend you try LivePlan. It contains the same
+                    templates and information you see here, but with additional
+                   guidance to help you develop the perfect plan.</p>
                 <a>Read More<i class="fal fa-arrow-right"></i></a>
               </div>
             </div>
@@ -63,11 +74,12 @@
               <div class="content">
                 <h3>Warrior</h3>
                 <span>$40</span>
-                <p>Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Deserunt reiciendis blanditiis
-                  eligendi unde, accusantium soluta totam laudantium
-                  reprehenderit perspiciatis nulla quidem! Rem pariatur
-                  consequatur soluta atque ipsum aperiam! Et, praesentium!</p>
+                <p>At Corporate Fitness, we tie worker productivity directly
+                   to the health care issue. We believe that traditional approaches
+                    to the current health care crisis are misdirected. These traditional 
+                    efforts are what we call reactive–that is, they wait until after the worker
+                     has been stricken with illness or injury,
+                   and then pay for the necessary treatments.</p>
                 <a>Read More<i class="fal fa-arrow-right"></i></a>
               </div>
             </div>
@@ -198,59 +210,29 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-4 col-sm-6 col-xs-6">
+     
+      <div class="container1">
+        {% for trainer in trainers %} 
+        <div class="col-md-3 col-sm-6 col-xs-6">
           <div class="team-wrapper">
-            <div class="image">
-              <img src="{% static 'images/team/1.jpg' %}">
+            <div class="a">
+              <img  src="{{trainer.user.image.url}}">
             </div>
+            
             <div class="content">
-              <h4>Daniel</h4>
-              <span>Coach</span>
-              <ul>
-                <li><i class="fab fa-facebook-f"></i></li>
-                <li><i class="fab fa-twitter"></i></li>
-                <li><i class="fab fa-instagram"></i></li>
-                <li><i class="fab fa-pinterest-p"></i></li>
-              </ul>
+              <a href="{% url 'gym:trainerdetail' trainer.id %}"><h4 style="text-transform: uppercase">{{ trainer.user.full_name }}</h4></a>
+              <span style="text-transform: uppercase">{{trainer.department}}</span>
+            
             </div>
           </div>
         </div>
-        <div class="col-md-4 col-sm-6 col-xs-6">
-          <div class="team-wrapper">
-            <div class="image">
-              <img src="{% static 'images/team/2.jpg' %}">
-            </div>
-            <div class="content">
-              <h4>Bella</h4>
-              <span>Coach</span>
-              <ul>
-                <li><i class="fab fa-facebook-f"></i></li>
-                <li><i class="fab fa-twitter"></i></li>
-                <li><i class="fab fa-instagram"></i></li>
-                <li><i class="fab fa-pinterest-p"></i></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6 col-xs-6">
-          <div class="team-wrapper">
-            <div class="image">
-              <img src="{% static 'images/team/3.jpg' %}">
-            </div>
-            <div class="content">
-              <h4>Romeo</h4>
-              <span>Coach</span>
-              <ul>
-                <li><i class="fab fa-facebook-f"></i></li>
-                <li><i class="fab fa-twitter"></i></li>
-                <li><i class="fab fa-instagram"></i></li>
-                <li><i class="fab fa-pinterest-p"></i></li>
-              </ul>
-            </div>
-          </div>
-        </div>
+      {% endfor %} 
+
+      
+      
       </div>
+    
+    </div>
     </div>
   </section>
 

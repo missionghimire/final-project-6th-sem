@@ -87,7 +87,8 @@ class Plan(models.Model):
 class TrainerDepartment(models.Model):
     DEPARTMENT=[
         ("GYM","GYM"),
-        ("Cardio","Cardio")
+        ("Cardio","Cardio"),
+        ("zumba","zumba")
         
     ]
     department=models.CharField(max_length=100,choices=DEPARTMENT)

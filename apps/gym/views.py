@@ -13,6 +13,9 @@ from config import settings
 
 def home(request):
     context = dict()
+   
+   
+
     enquiry = Enquery.objects.all()
     plan = Plan.objects.all()
     equipment = Equipment.objects.all()
@@ -30,7 +33,13 @@ def home(request):
     for mmember in member:
         m1 += 1
     context = {'e1': e1, 'p1': p1, 'eq1': eq1, 'm1': m1}
+    context['trainers']=Trainer.objects.all()
     return render(request, 'pages/index.html', context)
+
+def trainerdetails(request,pk):
+    context=dict()
+    context['trainerdetails']=Trainer.objects.filter(id=pk)
+    return render(request,'pages/trainerdetail.html',context)
 
 
 def signup(request):
@@ -73,6 +82,7 @@ def becomemember(request):
     context = dict()
     if request.method == 'POST':
         form = MemberForm(request.POST)
+        
         if (form.is_valid):
             data = form.save(commit=False)
             data.user = request.user

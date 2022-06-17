@@ -32,8 +32,12 @@
        </tr>
      </thead>
      <tbody>
-    
+      
+  
         {% for info in infos %}
+        {% if info.is_approved %}
+        
+        
         
 
 
@@ -62,8 +66,10 @@
         
        </tr>
      </tbody>
+     {% endif %}
    
    {% endfor %}
+   
 
 
    </table>

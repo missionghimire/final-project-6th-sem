@@ -1,59 +1,66 @@
 {% extends "base.html"%}
-{%load crispy_forms_tags %} 
+{%load crispy_forms_tags %}
 
 {% load static %}
 
 {% block body_content %}
 
 
-	
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">Gym Membership</h2>
-				</div>
-			</div>
-			<div class="row justify-content-center">
-				<div class="col-md-12 col-lg-10">
-					<div class="wrap d-md-flex">
-						<div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
-							<div class="text w-100">
-								<h2>Welcome to Membership</h2>
-								<p>view Membership</p>
-								<a href="{% url 'gym:approve' %}" class="btn btn-white btn-outline-white">View Membership</a>
-							</div>
-			      </div>
-						<div class="login-wrap p-4 p-lg-5">
-			      	<div class="d-flex">
-			      		<div class="w-100">
-			      			<h3 class="mb-4">Membership</h3>
-			      		</div>
-								<div class="w-100">
-									<p class="social-media d-flex justify-content-end">
-										<a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
-										<a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
-									</p>
-								</div>
-			      	</div>
-							<form action="#" class="signin-form" method="post">
-								 {% csrf_token %} 
 
-			      		<div class="form-group mb-3 label" >
-                            {{ form|crispy }}
-			      			
-			      		</div>
-		           
-		            <div class="form-group">
-		            	<button type="submit" class="form-control btn btn-primary submit px-3">Become a Member</button>
-		            </div>
-		           
-		          </form>
-		        </div>
-		      </div>
+<section class="ftco-section">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-6 text-center mb-5">
+				<h2 class="heading-section">Gym Membership</h2>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-md-12 col-lg-10">
+				<div class="wrap d-md-flex">
+					<div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
+						<div class="text w-100">
+							<h2>Welcome to Membership</h2>
+							
+							<a href="{% url 'gym:approve' %}" class="btn btn-white btn-outline-white">View
+								Membership</a>
+						</div>
+					</div>
+					<div class="login-wrap p-4 p-lg-5">
+						<div class="d-flex">
+							<div class="w-100">
+								<h3 class="mb-4">Membership</h3>
+							</div>
+							<div class="w-100">
+								<p class="social-media d-flex justify-content-end">
+									<a href="#"
+										class="social-icon d-flex align-items-center justify-content-center"><span
+											class="fa fa-facebook"></span></a>
+									<a href="#"
+										class="social-icon d-flex align-items-center justify-content-center"><span
+											class="fa fa-twitter"></span></a>
+								</p>
+							</div>
+						</div>
+						<form action="#" class="signin-form" method="post">
+							{% csrf_token %}
+
+							<div class="form-group mb-3 label">
+								{{ form|crispy }}
+
+
+
+							</div>
+
+							<div class="form-group">
+								<button type="submit" class="form-control btn btn-primary submit px-3">Become a
+									Member</button>
+							</div>
+
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
-	</section>
-	{% endblock %}
-
+	</div>
+</section>
+{% endblock %}
