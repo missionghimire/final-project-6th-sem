@@ -20,6 +20,7 @@
                             <li>
                                 <a href="{% url 'gym:service' %}">Services</a>
                             </li>
+                            {% if user.is_authenticated %}
                             {% if user.is_trainer %}
                             <li>
                                 <a href="{% url 'gym:trainer' %}">Trainer</a>
@@ -29,6 +30,9 @@
                                 <a href="{% url 'gym:member' %}">Member</a>
                             </li>
                             {% endif %}
+                            {% endif %}
+
+
                             <li>
                                 <a href="{% url 'gym:contact' %}">Contact Us</a>
                             </li>

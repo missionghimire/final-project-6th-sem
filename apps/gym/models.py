@@ -45,9 +45,11 @@ class CustomUser(AbstractUser):
                                  max_length=255,
                                  blank=True,
                                  null=False)
+
     address=models.CharField(max_length=100,null=True)    
     number=models.CharField(max_length=100,null=True)                         
     image = models.FileField(upload_to= 'uploads/%Y/%m/%d',null=True)
+
     is_trainer=models.BooleanField(default=False)
     REQUIRED_FIELDS = 'full_name', 'username','address','number','image',
     USERNAME_FIELD = 'email'
@@ -82,6 +84,24 @@ class Plan(models.Model):
 
     def __str__(self):
         return self.name
+class TrainerDepartment(models.Model):
+    DEPARTMENT=[
+        ("GYM","GYM"),
+        ("Cardio","Cardio")
+        
+    ]
+    department=models.CharField(max_length=100,choices=DEPARTMENT)
+    def __str__(self):
+        return self.department
+
+class Trainer(models.Model):
+    user=models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    department=models.ForeignKey(TrainerDepartment,on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.user.username
+
+
 
 
 class Member(models.Model):
@@ -101,6 +121,7 @@ class Member(models.Model):
     joindate = models.DateTimeField(auto_now_add=True)
     expiredate = models.DateField()
     initialamount = models.DecimalField(max_digits=10, decimal_places=2)
+    trainer=models.ForeignKey(Trainer,on_delete=models.CASCADE,null=True)
     status=models.CharField(max_length=100,choices=STATUS,default="pending",null=True)
     is_approved = models.BooleanField(default=False)
 
@@ -135,3 +156,4 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.Name
+

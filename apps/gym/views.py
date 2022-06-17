@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from apps.gym.forms import ContactForm, CustomUserForm, Formbmi, MemberForm, UserUpdateForm
-from apps.gym.models import CustomUser, Enquery, Equipment, Member, Plan
+from apps.gym.models import CustomUser, Enquery, Equipment, Member, Plan, Trainer
 from django.core.mail import send_mail
 from config import settings
 
@@ -236,10 +236,10 @@ def contact(request):
 def about(request):
     return render(request, 'pages/about.html')
 
-
+@login_required(login_url='gym:signin')
 def trainer(request):
     context = dict()
-    if request.user.is_authenticated:
-
-        context['infos'] = Member.objects.all()
+    # if request.user.is_authenticated:
+    trainer = Trainer.objects.get(user__id=request.user.id)
+    context['infos'] = Member.objects.filter(trainer__id=trainer.id)
     return render(request, 'pages/trainer.html', context)

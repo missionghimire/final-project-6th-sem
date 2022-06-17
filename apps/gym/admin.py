@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from apps.gym.models import Contact, CustomUser, Enquery, Equipment, Plan, Member, AccountInfo, Dietmanagement
+from apps.gym.models import Contact, CustomUser, Enquery, Equipment, Plan, Member, AccountInfo, Dietmanagement, Trainer, TrainerDepartment
 
 admin.site.register(CustomUser)
 admin.site.register(Enquery)
@@ -10,3 +10,5 @@ admin.site.register(Member)
 admin.site.register(AccountInfo)
 admin.site.register(Dietmanagement)
 admin.site.register(Contact)
+admin.site.register(TrainerDepartment)
+admin.site.register(Trainer)

@@ -20,6 +20,10 @@
          <th scope="col">Name</th>
          <th scope="col">Date_of_birth</th>
          <th scope="col">Gemder</th>
+         <th scope="col">Trainer</th>
+         <th scope="col">plan</th>
+
+
          <th scope="col">joindate</th>
          <th scope="col">expiredate</th>
          
@@ -28,13 +32,24 @@
        </tr>
      </thead>
      <tbody>
+    
         {% for info in infos %}
+        
+
+
        <tr>
         <th scope="row">{{forloop.counter}}</th>
          <th scope="row">{{info.user.full_name}}</th>
          
          <td>{{info.date_of_birth}}</td>
          <td>{{info.gender}}</td>
+         <td>{{info.trainer}}</td>
+         
+         <td>{{info.plan}}</td>
+         
+         
+         
+
          <td>{{info.joindate}}</td>
          <td>{{info.expiredate}}</td>
         
@@ -47,7 +62,9 @@
         
        </tr>
      </tbody>
+   
    {% endfor %}
+
 
    </table>
    {% endblock %}
