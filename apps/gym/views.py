@@ -200,6 +200,7 @@ def service(request):
             return redirect('gym:member')
     else:
         messages.success(request, 'login first')
+        
         return redirect('gym:signin')
 
     return render(request, 'pages/services.html', {'form': form})
@@ -249,7 +250,7 @@ def about(request):
 @login_required(login_url='gym:signin')
 def trainer(request):
     context = dict()
-    # if request.user.is_authenticated:
-    trainer = Trainer.objects.get(user__id=request.user.id)
+    if request.user.is_authenticated:
+        trainer = Trainer.objects.get(user__id=request.user.id)
     context['infos'] = Member.objects.filter(trainer__id=trainer.id)
     return render(request, 'pages/trainer.html', context)

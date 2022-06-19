@@ -1,6 +1,6 @@
 from os import abort
 from django.urls import path
-from . import views
+
 # from django.contrib.auth import views as auth_views
 
 from apps.gym.views import Logout, about, approve, becomemember, contact, delete, home, service, signin, signup, trainer, trainerdetails, userprofil, update
