@@ -54,70 +54,42 @@
   </section>
 
 
-  <section class="bg-04">
+  <section class="bg-05">
     <div class="container">
       <div class="row">
         <div class="col-12">
           <div class="heading">
-            <h2>Our Trainer</h2>
+            <h2>Our Package</h2>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-4 col-sm-6 col-xs-6">
-          <div class="team-wrapper">
-            <div class="image">
-              <img src="{% static 'images/team/1.jpg' %}">
-            </div>
-            <div class="content">
-              <h4>Daniel</h4>
-              <span>Coach</span>
-              <ul>
-                <li><i class="fab fa-facebook-f"></i></li>
-                <li><i class="fab fa-twitter"></i></li>
-                <li><i class="fab fa-instagram"></i></li>
-                <li><i class="fab fa-pinterest-p"></i></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6 col-xs-6">
-          <div class="team-wrapper">
-            <div class="image">
-              <img src="{% static 'images/team/2.jpg' %}">
-            </div>
-            <div class="content">
-              <h4>Bella</h4>
-              <span>Coach</span>
-              <ul>
-                <li><i class="fab fa-facebook-f"></i></li>
-                <li><i class="fab fa-twitter"></i></li>
-                <li><i class="fab fa-instagram"></i></li>
-                <li><i class="fab fa-pinterest-p"></i></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6 col-xs-6">
-          <div class="team-wrapper">
-            <div class="image">
-              <img src="{% static 'images/team/3.jpg' %}">
-            </div>
-            <div class="content">
-              <h4>Romeo</h4>
-              <span>Coach</span>
-              <ul>
-                <li><i class="fab fa-facebook-f"></i></li>
-                <li><i class="fab fa-twitter"></i></li>
-                <li><i class="fab fa-instagram"></i></li>
-                <li><i class="fab fa-pinterest-p"></i></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+      
+      <table class="table table-hover ">
+        <thead style="color:#000 ; font-weight: bold;">
+          <tr>
+            <th scope="col">SN</th>
+            <th scope="col">NAME</th>
+            <th scope="col">AMOUNT</th>
+            <th scope="col">DURATION</th>
+          </tr>
+        </thead>
+        
+        <tbody >
+          {% for plan in plans %}
+          <tr style="color:#000;font-weight: bold; text-transform: uppercase;">
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{plan.name}}</td>
+            <td>{{plan.amount}}</td>
+            <td>{{plan.duration}}</td>
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+       
+      </table>
+    
     </div>
-  </section>
+
 
 
   <section class="bg-06">

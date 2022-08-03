@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'apps.gym'
+    'apps.gym',
+    'django_filters'
 ]
 
 AUTH_USER_MODEL = 'gym.CustomUser'

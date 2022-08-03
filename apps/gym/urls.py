@@ -3,7 +3,8 @@ from django.urls import path
 
 # from django.contrib.auth import views as auth_views
 
-from apps.gym.views import Logout, about, approve, becomemember, contact, delete, home, service, signin, signup, trainer, trainerdetails, userprofil, update
+from apps.gym.views import Logout, about, approve, becomemember, contact, delete\
+    , home, service, signin, signup, trainer, trainerdetails, userprofil, update
 
 app_name = 'gym'
 
@@ -21,5 +22,6 @@ urlpatterns = [
     path('contact', contact, name='contact'),
     path("about", about, name='about'),
     path('trainer',trainer,name='trainer'),
-    path('trainerdetail/<int:pk>',trainerdetails,name="trainerdetail")
+    path('trainerdetail/<int:pk>',trainerdetails,name="trainerdetail"),
+     
 ]

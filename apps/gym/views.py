@@ -1,3 +1,4 @@
+from multiprocessing import context
 import re
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
@@ -245,7 +246,9 @@ def contact(request):
 
 
 def about(request):
-    return render(request, 'pages/about.html')
+    context=dict()
+    context['plans']=Plan.objects.all()
+    return render(request, 'pages/about.html',context)
 
 @login_required(login_url='gym:signin')
 def trainer(request):
