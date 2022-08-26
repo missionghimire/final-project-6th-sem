@@ -1,0 +1,73 @@
+{% extends "base.html"%}
+{%load crispy_forms_tags %} 
+
+{% load static %}
+
+{% block body_content %}
+
+
+	
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+				
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-12 col-lg-10">
+					<div class="wrap d-md-flex">
+						<div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
+							<div class="text w-100">
+								<p> Welcome to BMI Calculation </p>
+								<p>Your BMI Result</p>
+								<h2 style='color: blue; scrollbar-highlight-color: rgb(34, 202, 18);'>{{ result2 }}</h2>
+							</div>
+			      </div>
+						<div class="login-wrap p-4 p-lg-5">
+			      	<div class="d-flex">
+			      		<div class="w-100">
+			      		
+			      		</div>
+								<div class="w-100">
+									<p class="social-media d-flex justify-content-end">
+										<a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
+										<a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
+									</p>
+								</div>
+			      	</div>
+    <form action="result">
+       <table>
+        <tr>
+          <td align="right">Gender</td>
+          
+            <td align="left"><input type="text" name="Gender" placeholder="enter 1 for male amd 2 for female"></td>
+          </td>
+        </tr>
+        
+        <tr>
+          <td align="right">Height:</td>
+          <td align="left"><input type="text" name="Height"></td>
+        </tr>
+      
+       
+        <tr>
+          <td align="right">Weight:</td>
+          <td align="left"><input type="text" name="Weight"></td>
+        </tr>
+        </table>
+        <br>
+
+       
+ <input type="submit">
+    </form>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+{% endblock %}
+
+
+ 

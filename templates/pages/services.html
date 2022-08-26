@@ -36,7 +36,7 @@
 									</p>
 								</div>
 			      	</div>
-					 
+<!-- 					 
 							<form action="#" class="signin-form" method="post">
 								 {% csrf_token %} 
 
@@ -50,7 +50,32 @@
 					</div>
 					{% endif %}
 		            
-		          </form>
+		          </form> -->
+				  <form  class="signin-form" action="result">
+					
+					<table>
+						<tr>
+						  <td align="right">Gender</td>
+						 
+							<td align="left"><input type="text" name="Gender" placeholder="enter 1 for male amd 2 for female"></td>
+						  </td>
+						</tr>
+						
+						<tr>
+						  <td align="right">Height:</td>
+						  <td align="left"><input type="text" name="Height"></td>
+						</tr>
+					   
+						<tr>
+						  <td align="right">Weight:</td>
+						  <td align="left"><input type="text" name="Weight"></td>
+						</tr>
+						</table>
+						<input type="submit">
+				  </form>
+				  Result: {{ result2 }}
+				  
+
 				  
 		        </div>
 		      </div>

@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from apps.gym.models import Category, Contact, CustomUser, Enquery, Equipment, Plan, Member, AccountInfo, Dietmanagement, Trainer, TrainerDepartment
+from apps.gym.models import Carausel, Category, Contact, CustomUser, Enquery, Equipment\
+    , Plan, Member, AccountInfo, Dietmanagement, Trainer, TrainerDepartment
 
 admin.site.register(CustomUser)
 admin.site.register(Enquery)
@@ -12,6 +13,8 @@ admin.site.register(Dietmanagement)
 admin.site.register(Contact)
 admin.site.register(TrainerDepartment)
 admin.site.register(Category)
+admin.site.register(Carausel)
+
 # admin.site.register(Fooditem)
 # admin.site.register(UserFooditem)
 

@@ -9,7 +9,7 @@
     .a{
 		max-width: 200px;
 		max-height:300px;
-		margin: 0 auto;
+		margin: 0 auto
 		
 	}
     .container1{
@@ -17,25 +17,29 @@
       
     }
   </style>
-
-  <section class="banner">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="wrapper">
-            <h1>give vent <span>to</span> emotions</h1>
-            <h5>A good gym involves more than just the right exercise equipment. 
-              You need to think of the type of clientele you’ll be serving,
-               membership and subscription fees, hosting fitness classes,
-                and finding new ways to differentiate your fitness center
-                 from the competition. The best way to plan all this out
-               and leverage your strengths is by starting off with a business plan.</h5>
-              <a>Join the force</a>
+<section class="slider">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+          {% for object in car %}
+          <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+          <img style="height: 600px;" class="d-block w-100" src="{{object.image.url}}">
           </div>
-        </div>
+          
+          {% endfor %}
       </div>
-    </div>
-  </section>
+  </div>
+  
+          
+          
+          
+
+
+
 
   <section class="bg-01">
     <div class="wrapper d-flex">
@@ -43,7 +47,7 @@
        <h2>32%
          <span>Discount</span>
        </h2>
-       <a>Play Now</a>
+       <a href="#playnow">Play Now</a>
       </div>
       <div class="right-side d-flex">
         <div class="container">
@@ -201,7 +205,7 @@
     </div>
   </section>
 
-  <section class="bg-04">
+  <section class="bg-04" id="playnow">
     <div class="container">
       <div class="row">
         <div class="col-12">

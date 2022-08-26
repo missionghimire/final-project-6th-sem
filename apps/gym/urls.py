@@ -4,7 +4,7 @@ from django.urls import path
 # from django.contrib.auth import views as auth_views
 
 from apps.gym.views import Logout, about, approve, becomemember, contact, delete\
-    , home, service, signin, signup, trainer, trainerdetails, userprofil, update
+    , home, service, signin, signup, trainer, trainerdetails, userprofil, update, predict,result
 
 app_name = 'gym'
 
@@ -23,5 +23,6 @@ urlpatterns = [
     path("about", about, name='about'),
     path('trainer',trainer,name='trainer'),
     path('trainerdetail/<int:pk>',trainerdetails,name="trainerdetail"),
-     
+    path('predict/',predict,name='predict'),
+    path('predict/result',result,name='result'),
 ]

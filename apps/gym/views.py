@@ -7,16 +7,18 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from apps.gym.forms import ContactForm, CustomUserForm, Formbmi, MemberForm, UserUpdateForm
-from apps.gym.models import CustomUser, Enquery, Equipment, Member, Plan, Trainer
+from apps.gym.models import Carausel, CustomUser, Dietmanagement, Enquery, Equipment, Member, Plan, Trainer
 from django.core.mail import send_mail
 from config import settings
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
 
 
 def home(request):
     context = dict()
-   
-   
-
+    
     enquiry = Enquery.objects.all()
     plan = Plan.objects.all()
     equipment = Equipment.objects.all()
@@ -35,6 +37,7 @@ def home(request):
         m1 += 1
     context = {'e1': e1, 'p1': p1, 'eq1': eq1, 'm1': m1}
     context['trainers']=Trainer.objects.all()
+    context['car']=Carausel.objects.all()
     return render(request, 'pages/index.html', context)
 
 def trainerdetails(request,pk):
@@ -157,54 +160,57 @@ def approve(request):
     return render(request, 'pages/approved.html', context)
 
 
-def service(request):
+# def service(request):
 
-    if request.user.is_authenticated:
-        if (request.method == "POST"):
-            context = {}
 
-            form = Formbmi(request.POST)
-            data = request.POST
-            print(data)
-            height = float(data['height']) / 0.0328084
-            weight = float(data['weight'])
-            print(height, weight)
-            bmi = weight / (height / 100)**2
-            print(bmi, '-------------')
-            if (bmi < 18.5):
-                context['status'] = "You are underweight"
-            elif (bmi >= 18.5 and bmi < 24.9):
-                context['status'] = "You are healthy."
-            elif (bmi >= 24.9 and bmi < 29.9):
-                context['status'] = "You are over weight."
-            elif (bmi <= 34.9):
-                context['status'] = "You are severely over weight"
+#     if request.user.is_authenticated:
+#         if (request.method == "POST"):
+#             context = {}
 
-            elif (bmi <= 39.9):
-                context['status'] = "You are obese"
-            else:
-                context['status'] = "You are severely obese"
+#             form = Formbmi(request.POST)
+#             data = request.POST
+#             print(data)
+#             height = float(data['height']) / 0.0328084
+#             weight = float(data['weight'])
+#             print(height, weight)
+#             bmi = weight / (height / 100)**2
+#             print(bmi, '-------------')
+#             if (bmi < 18.5):
+#                 context['status'] = "You are underweight"
+#             elif (bmi >= 18.5 and bmi < 24.9):
+#                 context['status'] = "You are healthy."
+#             elif (bmi >= 24.9 and bmi < 29.9):
+#                 context['status'] = "You are over weight."
+#             elif (bmi <= 34.9):
+#                 context['status'] = "You are severely over weight"
 
-            return render(request, 'pages/services.html', context)
-        else:
-            form = Formbmi()
+#             elif (bmi <= 39.9):
+#                 context['status'] = "You are obese"
+#             else:
+#                 context['status'] = "You are severely obese"
 
-        try:
+#             return render(request, 'pages/services.html', context)
+#         else:
+#             form = Formbmi()
 
-            info = Member.objects.get(user__id=request.user.id)
-            if (not info.is_approved):
-                messages.success(request, 'Admin Approved first')
-                return redirect('gym:approve')
+#         try:
 
-        except:
-            messages.error(request, 'Membership first')
-            return redirect('gym:member')
-    else:
-        messages.success(request, 'login first')
+#             info = Member.objects.get(user__id=request.user.id)
+#             if (not info.is_approved):
+#                 messages.success(request, 'Admin Approved first')
+#                 return redirect('gym:approve')
+
+#         except:
+#             messages.error(request, 'Membership first')
+#             return redirect('gym:member')
+#     else:
+#         messages.success(request, 'login first')
         
-        return redirect('gym:signin')
+#         return redirect('gym:signin')
 
-    return render(request, 'pages/services.html', {'form': form})
+#     return render(request, 'pages/services.html', {'form': form})
+
+# 
 
 
 @login_required(login_url='gym:signin')
@@ -257,3 +263,48 @@ def trainer(request):
         trainer = Trainer.objects.get(user__id=request.user.id)
     context['infos'] = Member.objects.filter(trainer__id=trainer.id)
     return render(request, 'pages/trainer.html', context)
+
+
+def service(request):
+   
+    return render(request, "pages/services.html")
+
+def predict(request):
+    context =dict()
+    return render(request,"pages/predict.html", context)
+
+def result(request):
+    data = pd.read_csv('bmi.csv')
+    data = pd.get_dummies(data)
+    data.drop('Gender_Male',axis=1, inplace=True)
+    X =data.drop('Index',axis=1)
+    y = data['Index']
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+    model = LogisticRegression()
+    model.fit(X_train,y_train)
+
+
+    val1 = float(request.GET['Gender'])
+    val3 = float(request.GET['Height'])  #/ 0.0328084
+    val4 = float(request.GET['Weight'])
+    pred = model.predict([[val1,val3,val4]])
+
+    result1 = ""
+    
+    
+    if pred  == [0]:
+        result1 = " Weak"
+    elif  pred  == [1]:
+        result1 = "Extrmly Weak."
+    elif   pred  == [2]:
+        result1 = "Normal"
+    elif  pred == [3]:
+        result1 = "You are over weight."
+    elif  pred  == [4]:
+        result1 = " Obesity"
+    elif  pred  == [5]:
+        result1 = "Extreme Obesity"
+    else:
+        result1 = "other"
+  
+    return render(request, "pages/predict.html",{'result2':result1})

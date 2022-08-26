@@ -46,7 +46,7 @@ class Formbmi(forms.ModelForm):
 
     class Meta:
         model = Dietmanagement
-        fields = ('__all__')
+        exclude = ('result','user')
 
 
 class ContactForm(forms.ModelForm):

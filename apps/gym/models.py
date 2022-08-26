@@ -1,3 +1,4 @@
+
 from django.db import models
 from django.contrib.auth.base_user import BaseUserManager
 from django.utils.translation import gettext_lazy as _
@@ -137,16 +138,27 @@ class AccountInfo(models.Model):
     #     return self.member.first_name
 
 
+# class Dietmanagement(models.Model):
+#     height = models.IntegerField()
+#     weight = models.IntegerField()
+#     # def __str__(self):
+#     #     return self.username
+
+
 class Dietmanagement(models.Model):
-    height = models.IntegerField()
-    weight = models.IntegerField()
+    pass
+    # Gender=[('Male','Male'),('Female','Female')]
+
+    # user=models.ForeignKey(CustomUser,on_delete=models.CASCADE,null=True)
+    # gender=models.CharField(max_length=100,choices=Gender,null=True)
+    # height = models.CharField(max_length=199)
+    # weight = models.CharField(max_length=100)
+    
+    # result=models.CharField(max_length=100,null=True)
+
     # def __str__(self):
-    #     return self.username
+    #     return f"{self.user.username} Report"
 
-
-class Dietmanagement(models.Model):
-    height = models.CharField(max_length=199)
-    weight = models.CharField(max_length=100)
 
 
 class Contact(models.Model):
@@ -169,4 +181,11 @@ class Category(models.Model):
     name=models.CharField(max_length=50,choices=options)
     def __str__(self):
         return self.name
+class Carausel(models.Model):
+    image=models.ImageField(upload_to='Carausel/%y/%m/%d')
+    title=models.CharField(max_length=100)
+    sub_title=models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.title
 
